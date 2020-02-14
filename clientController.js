@@ -9,11 +9,12 @@ exports.index = (req, res) => {
                 status: "error",
                 msg: err
             });
-        res.json({
-            status: "success",
-            message: "Elenco clienti otenuto correttamente.",
-            data: clients
-        });
+        else
+            res.json({
+                status: "success",
+                message: "Elenco clienti otenuto correttamente.",
+                data: clients
+            });
     });
 };
 
@@ -26,10 +27,11 @@ exports.view = (req, res) => {
                 status: "error",
                 msg: err
             });
-        res.json({
-            status: "success",
-            data: client
-        });
+        else
+            res.json({
+                status: "success",
+                data: client
+            });
     });
 };
 
@@ -47,11 +49,12 @@ exports.new = (req, res) => {
                 status: "error",
                 msg: err
             });
-        res.json({
-            status: "success",
-            msg: "Nuovo cliente creato: " + client.last_name + ", " + client.first_name + ".",
-            data: client
-        });
+        else
+            res.json({
+                status: "success",
+                msg: "Nuovo cliente creato: " + client.last_name + ", " + client.first_name + ".",
+                data: client
+            });
     });
 };
 
@@ -63,22 +66,24 @@ exports.update = (req, res) => {
                 status: "error",
                 msg: err
             });
-        client.last_name = req.body.last_name;
-        client.first_name = req.body.first_name;
-        client.email = req.body.email;
-        client.phone = req.body.phone;
-        client.save((err) => {
-            if (err)
+        else {
+            client.last_name = req.body.last_name;
+            client.first_name = req.body.first_name;
+            client.email = req.body.email;
+            client.phone = req.body.phone;
+            client.save((err) => {
+                if (err)
+                    res.json({
+                        status: "error",
+                        msg: err
+                    });
                 res.json({
-                    status: "error",
-                    msg: err
+                    status: "success",
+                    msg: "Aggiornato cliente: " + client.last_name + ", " + client.first_name,
+                    data: client
                 });
-            res.json({
-                status: "success",
-                msg: "Aggiornato cliente: " + client.last_name + ", " + client.first_name,
-                data: client
             });
-        });
+        };
     });
 };
 
@@ -92,9 +97,10 @@ exports.delete = (req, res) => {
                 status: "error",
                 msg: err
             });
-        res.json({
-            status: "success",
-            msg: "Rimosso cliente: " + client.last_name + ", " + client.first_name + "."
-        });
+        else
+            res.json({
+                status: "success",
+                msg: "Rimosso cliente: " + client.last_name + ", " + client.first_name + "."
+            });
     });
 };
