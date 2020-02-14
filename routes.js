@@ -10,10 +10,17 @@ router.get('/', (req, res) => {
     });
 });
 
+// Route to list and create new clients
 router.route('/clients/')
-    .get(clientController.index);
+    .get(clientController.index)
+    .post(clientController.new);
 
+// Route to view, update or delete client by ID
 router.route('/clients/:client_id')
-    .get(clientController.view);
+    .get(clientController.view)
+    .patch(clientController.update)
+    .put(clientController.update)
+    .delete(clientController.delete);
+
 
 module.exports = router;
