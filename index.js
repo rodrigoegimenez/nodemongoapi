@@ -23,8 +23,13 @@ app.use(bodyParser.json());
 // Now we add our routing, which is abstracted in a routes.js file
 app.use('/', routes);
 
+// Connect to database using new parser and new connection management
+mongoose.connect('mongodb://localhost:27017/nodemongoapi', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
 // Start the server
 app.listen(port, () => {
     console.log("Running server on port " + port);
 });
-
