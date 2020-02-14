@@ -24,7 +24,9 @@ app.use(bodyParser.json());
 app.use('/', routes);
 
 // Connect to database using new parser and new connection management
-mongoose.connect('mongodb://localhost:27017/nodemongoapi', {
+// Add compatibility so we can also run it inside a Docker container
+let dbserver = process.env.DBSERVER || "localhost"
+mongoose.connect('mongodb://' + dbserver + ': 27017/nodemongoapi', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
