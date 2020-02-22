@@ -33,5 +33,5 @@ mongoose.connect(`mongodb://${dbserver}:27017/nodemongoapi`, {
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Running server on port ${port}`);
+  console.log(`Running server on http://localhost:${port}`);
 });
