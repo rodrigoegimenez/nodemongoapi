@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable no-param-reassign */
 // Import client Model
 const Client = require('./clientModel');
