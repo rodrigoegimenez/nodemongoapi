@@ -21,10 +21,10 @@ $ docker-compose up --build
 After installing and running mongodb, first start the app
 ```bash
 $ npm install --only=dev
-$ node index.js
+$ npm run dev
 ```
 
 and then run the tests:
 ```bash
-$ ./node_modules/mocha/bin/mocha -b
+$ npm run test
 ```

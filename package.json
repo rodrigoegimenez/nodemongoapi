@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "test": "pushd src && ../node_modules/mocha/bin/mocha -b && popd"
   },
   "author": "Rodrigo Gimenez <rodrigogimenez@libero.it>",
   "license": "ISC",
