@@ -4,7 +4,8 @@
 const supertest = require('supertest');
 const should = require('should');
 
-const server = supertest.agent('http://localhost:3000');
+const url = 'localhost:3000';
+const server = supertest.agent(url);
 
 
 describe('Test Client API', () => {
@@ -19,7 +20,7 @@ describe('Test Client API', () => {
   let clientId = null;
   it('Dovrebbe creare nuovo cliente', (done) => {
     server
-      .post('/clients/')
+      .post('/api/clients/')
       .send(cliente)
       .expect('Content-type', /json/)
       .end((err, res) => {
@@ -36,7 +37,7 @@ describe('Test Client API', () => {
 
   it('Dovrebbe elencare clienti', (done) => {
     server
-      .get('/clients/')
+      .get('/api/clients/')
       .expect('Content-type', /json/)
       .expect(200)
       .end((err, res) => {
@@ -50,7 +51,7 @@ describe('Test Client API', () => {
 
   it('Dovrebbe mostrare cliente', (done) => {
     server
-      .get(`/clients/${clientId}`)
+      .get(`/api/clients/${clientId}`)
       .expect('Content-type', /json/)
       .expect(200)
       .end((err, res) => {
@@ -66,7 +67,7 @@ describe('Test Client API', () => {
 
   it('Dovrebbe eliminare cliente', (done) => {
     server
-      .delete(`/clients/${clientId}`)
+      .delete(`/api/clients/${clientId}`)
       .expect('Content-type', /json/)
       .expect(200)
       .end((err, res) => {
@@ -78,7 +79,7 @@ describe('Test Client API', () => {
 
   it('Dovrebbe non trovare cliente', (done) => {
     server
-      .get(`/clients/${clientId}`)
+      .get(`/api/clients/${clientId}`)
       .expect(200)
       .expect('Content-type', /json/)
       .end((err, res) => {
@@ -94,7 +95,7 @@ describe('Test Client API', () => {
 describe('Test ', () => {
   it('should return home page', (done) => {
     server
-      .get('/')
+      .get('/api/')
       .expect('Content-type', /json/)
       .expect(200)
       .end((err, res) => {
