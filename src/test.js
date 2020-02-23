@@ -42,7 +42,8 @@ describe('Test Client API', () => {
       .end((err, res) => {
         res.status.should.equal(200);
         res.body.status.should.equal('success');
-        res.body.data.should.exist();
+        // eslint-disable-next-line no-unused-expressions
+        res.body.data.should.exist;
         done();
       });
   });
