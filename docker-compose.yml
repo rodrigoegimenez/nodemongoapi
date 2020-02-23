@@ -9,8 +9,10 @@ services:
       - database
     depends_on:
       - database
+    restart: always
   
   database: 
     image: mongo
     volumes:
       - ./data/db:/data/db
+    restart: always
