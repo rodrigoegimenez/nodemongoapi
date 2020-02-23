@@ -32,7 +32,7 @@ app.use(cors({
 app.use(express.json());
 
 // Now we add our routing, which is abstracted in a routes.js file
-app.use('/', routes);
+app.use('/api', routes);
 
 
 app.use(middlewares.notFound);

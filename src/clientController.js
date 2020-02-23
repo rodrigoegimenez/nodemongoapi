@@ -43,11 +43,11 @@ exports.view = (req, res) => {
 // For testing purposes, create functions to add, update and
 // delete Clients
 exports.new = (req, res) => {
-  const client = new Client();
-  client.last_name = req.body.last_name;
-  client.first_name = req.body.first_name;
-  client.email = req.body.email;
-  client.phone = req.body.phone;
+  const client = new Client(req.body);
+  // client.last_name = req.body.last_name;
+  // client.first_name = req.body.first_name;
+  // client.email = req.body.email;
+  // client.phone = req.body.phone;
   client.save((err) => {
     if (err) {
       res.json({

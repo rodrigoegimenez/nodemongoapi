@@ -1,27 +1,18 @@
 // Client model
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const clientSchema = new mongoose.Schema(({
-  last_name: {
-    type: String,
-    required: true,
-  },
-  first_name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  phone: {
-    type: String,
-    required: true,
-  },
-  date_created: {
-    type: Date,
-    default: Date.now,
-  },
-}));
+const requiredString = {
+  type: String,
+  required: true,
+};
 
-module.exports = mongoose.model('client', clientSchema);
+const clientSchema = new Schema({
+  last_name: requiredString,
+  first_name: requiredString,
+  email: requiredString,
+  phone: requiredString,
+}, {
+  timestamps: true,
+});
+
+module.exports = model('client', clientSchema);
