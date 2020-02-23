@@ -7,7 +7,7 @@ Simple REST API built on NodeJS and MongoDB
 
 ```bash
 $ npm install --production
-$ node index.js
+$ npm start
 ```
 
 ### Inside a Docker container
@@ -21,10 +21,10 @@ $ docker-compose up --build
 After installing and running mongodb, first start the app
 ```bash
 $ npm install --only=dev
-$ node index.js
+$ npm run dev
 ```
 
 and then run the tests:
 ```bash
-$ ./node_modules/mocha/bin/mocha -b
+$ npm run test
 ```
